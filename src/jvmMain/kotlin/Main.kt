@@ -15,14 +15,14 @@ import androidx.compose.ui.window.application
 @Preview
 fun App() {
     val text = remember { mutableStateOf("") }
+    val message = "Hello ${text.value}"
+    val buttonEnabled = text.value.isNotEmpty()
 
     MaterialTheme {
         Column {
-            TextField(value = "", onValueChange = { newText -> TODO() })
-            Text(text = "")
-            Button(onClick = {
-                text.value = TODO()
-            }) {
+            TextField(value = text.value, onValueChange = { newText -> text.value = newText })
+            Text(text = message)
+            Button(onClick = { text.value = "" }, enabled = buttonEnabled) {
                 Text("Clean")
             }
         }
