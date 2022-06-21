@@ -7,22 +7,25 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 
+class AppState {
+    val text = mutableStateOf("")
+    val buttonEnabled get() = text.value.isNotEmpty()
+}
+
 @Composable
 @Preview
-fun App() {
-    val text = remember { mutableStateOf("") }
-    val message = buildMessage(text.value)
-    val buttonEnabled = text.value.isNotEmpty()
+fun App(appState: AppState) {
 
     MaterialTheme {
         Column {
-            TextField(value = text.value, onValueChange = { newText -> text.value = newText })
-            Text(text = message)
-            Button(onClick = { text.value = "" }, enabled = buttonEnabled) {
+            TextField(value = appState.text.value, onValueChange = { newText -> appState.text.value = newText })
+            Text(text = buildMessage(appState.text.value))
+            Button(
+                onClick = { appState.text.value = "" }, enabled = appState.buttonEnabled
+            ) {
                 Text("Clean")
             }
         }
@@ -31,8 +34,12 @@ fun App() {
 
 fun buildMessage(name: String): String = "Hello $name"
 
-fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
-        App()
+fun main() {
+    val appState = AppState()
+
+    application {
+        Window(onCloseRequest = ::exitApplication) {
+            App(appState)
+        }
     }
 }
