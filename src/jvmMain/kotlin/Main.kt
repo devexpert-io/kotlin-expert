@@ -16,7 +16,7 @@ import androidx.compose.ui.window.application
 
 @Composable
 @Preview
-fun App(appState: AppState): Unit = with(appState) {
+fun App(): Unit = with(AppState) {
 
     val notes = state.value.notes
 
@@ -77,11 +77,9 @@ fun NotesList(notes: List<Note>) {
 }
 
 fun main() {
-    val appState = AppState()
-
     application {
         Window(onCloseRequest = ::exitApplication) {
-            App(appState)
+            App()
         }
     }
 }
