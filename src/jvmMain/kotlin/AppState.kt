@@ -6,13 +6,12 @@ class AppState {
 
     fun loadNotes() {
         thread {
-            state.value = UiState(loading = true)
-            getNotes { state.value = UiState(notes = it) }
+            state.update { UiState(loading = true) }
+            getNotes { notes -> state.update { UiState(notes = notes) } }
         }
     }
 
     data class UiState(
-        val notes: List<Note>? = null,
-        val loading: Boolean = false
+        val notes: List<Note>? = null, val loading: Boolean = false
     )
 }
