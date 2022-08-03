@@ -18,12 +18,8 @@ import androidx.compose.ui.window.application
 @Preview
 fun App(): Unit = with(AppState) {
 
-    val notes = state.notes
-
-    if (notes == null) {
-        LaunchedEffect(true) {
-            loadNotes(this)
-        }
+    LaunchedEffect(true) {
+        loadNotes(this)
     }
 
     MaterialTheme {
