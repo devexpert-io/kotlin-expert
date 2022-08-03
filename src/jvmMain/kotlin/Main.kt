@@ -8,6 +8,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -17,6 +19,8 @@ import androidx.compose.ui.window.application
 @Composable
 @Preview
 fun App(): Unit = with(AppState) {
+
+    val state by state.collectAsState()
 
     LaunchedEffect(true) {
         loadNotes(this)
