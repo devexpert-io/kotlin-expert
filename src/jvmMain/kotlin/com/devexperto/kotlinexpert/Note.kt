@@ -10,14 +10,12 @@ data class Note(val title: String, val description: String, val type: Type) {
 
 fun getNotes() = flow {
     delay(2000)
-    var notes = emptyList<Note>()
-    (0..10).forEach {
-        notes = notes + Note(
+    val notes = (0..10).map {
+        Note(
             "Title $it",
             "Description $it",
             if (it % 3 == 0) Type.AUDIO else Type.TEXT
         )
-        emit(notes)
-        delay(500)
     }
+    emit(notes)
 }
