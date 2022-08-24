@@ -1,6 +1,6 @@
-package com.devexperto.kotlinexpert
+package com.devexperto.kotlinexpert.data
 
-import com.devexperto.kotlinexpert.Note.Type
+import com.devexperto.kotlinexpert.data.Note.Type
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.flow
 
