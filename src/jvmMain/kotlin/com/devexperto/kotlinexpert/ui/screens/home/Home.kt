@@ -1,9 +1,16 @@
 package com.devexperto.kotlinexpert.ui.screens.home
 
 import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
@@ -18,7 +25,7 @@ fun Home(): Unit = with(HomeState) {
     }
 
     MaterialTheme {
-        Scaffold(topBar = { TopBar() }) { padding ->
+        Scaffold(topBar = { TopBar(onFilterClick = ::onFilterClick) }) { padding ->
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier.padding(padding).fillMaxSize()
@@ -27,7 +34,7 @@ fun Home(): Unit = with(HomeState) {
                     CircularProgressIndicator()
                 }
 
-                state.notes?.let { NotesList(it) }
+                state.filteredNotes?.let { NotesList(it) }
             }
         }
     }
