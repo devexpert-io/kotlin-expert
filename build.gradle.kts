@@ -1,6 +1,8 @@
 import org.jetbrains.compose.compose
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
+val ktor_version: String by project
+
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
@@ -28,6 +30,8 @@ kotlin {
                 implementation(compose.desktop.currentOs)
                 implementation(compose.materialIconsExtended)
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.3")
+                implementation("io.ktor:ktor-client-core:$ktor_version")
+                implementation("io.ktor:ktor-client-okhttp:$ktor_version")
             }
         }
         val jvmTest by getting

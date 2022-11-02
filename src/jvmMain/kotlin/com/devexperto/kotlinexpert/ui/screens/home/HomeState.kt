@@ -2,7 +2,10 @@ package com.devexperto.kotlinexpert.ui.screens.home
 
 import com.devexperto.kotlinexpert.data.Filter
 import com.devexperto.kotlinexpert.data.Note
-import com.devexperto.kotlinexpert.data.fakeNotes
+import com.devexperto.kotlinexpert.data.remote.notesClient
+import io.ktor.client.*
+import io.ktor.client.call.*
+import io.ktor.client.request.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,10 +19,8 @@ object HomeState {
 
     fun loadNotes(coroutineScope: CoroutineScope) {
         coroutineScope.launch {
-            _state.value = UiState(loading = true)
-            Note.fakeNotes.collect {
-                _state.value = UiState(notes = it)
-            }
+            val response = notesClient.request("http://localhost:8080/notes")
+            println(response.body() as String)
         }
     }
 
