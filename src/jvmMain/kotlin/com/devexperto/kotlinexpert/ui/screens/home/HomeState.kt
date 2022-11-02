@@ -3,7 +3,6 @@ package com.devexperto.kotlinexpert.ui.screens.home
 import com.devexperto.kotlinexpert.data.Filter
 import com.devexperto.kotlinexpert.data.Note
 import com.devexperto.kotlinexpert.data.remote.notesClient
-import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 import kotlinx.coroutines.CoroutineScope
@@ -19,8 +18,9 @@ object HomeState {
 
     fun loadNotes(coroutineScope: CoroutineScope) {
         coroutineScope.launch {
+            _state.value = UiState(loading = true)
             val response = notesClient.request("http://localhost:8080/notes")
-            println(response.body() as String)
+            _state.value = UiState(notes = response.body())
         }
     }
 
