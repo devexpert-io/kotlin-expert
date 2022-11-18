@@ -17,7 +17,7 @@ fun App() {
     route.let {
         when (it) {
             Route.Home -> Home(onCreateClick = { route = Route.Detail(-1) })
-            is Route.Detail -> Detail(it.id)
+            is Route.Detail -> Detail(it.id, onClose = { route = Route.Home })
         }
     }
 
