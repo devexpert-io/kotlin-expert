@@ -16,41 +16,49 @@ import androidx.compose.ui.unit.dp
 import com.devexperto.kotlinexpert.data.Note
 
 @Composable
-fun Detail(id: Long, onClose: () -> Unit) {
+fun Detail(vm: DetailViewModel, onClose: () -> Unit) {
 
-    var note by remember { mutableStateOf(Note("", "", Note.Type.TEXT, 2)) }
+    val note = vm.state.note
 
     Scaffold(
         topBar = {
             TopBar(
                 note = note,
                 onClose = onClose,
-                onSave = onClose,
-                onDelete = onClose
+                onSave = vm::save,
+                onDelete = vm::delete
             )
         }
     ) {
-        Column(
-            modifier = Modifier.padding(32.dp)
-        ) {
-            OutlinedTextField(
-                value = note.title,
-                onValueChange = { note = note.copy(title = it) },
-                modifier = Modifier.fillMaxWidth(),
-                label = { Text("Title") },
-                maxLines = 1
-            )
-            TypeDropdown(
-                value = note.type,
-                onValueChange = { note = note.copy(type = it) },
-                modifier = Modifier.fillMaxWidth()
-            )
-            OutlinedTextField(
-                value = note.description,
-                onValueChange = { note = note.copy(description = it) },
-                label = { Text("Description") },
-                modifier = Modifier.fillMaxWidth().weight(1f)
-            )
+        if (vm.state.saved) {
+            onClose()
+        }
+
+        if (vm.state.loading) {
+            CircularProgressIndicator()
+        } else {
+            Column(
+                modifier = Modifier.padding(32.dp)
+            ) {
+                OutlinedTextField(
+                    value = note.title,
+                    onValueChange = { vm.update(note.copy(title = it)) },
+                    modifier = Modifier.fillMaxWidth(),
+                    label = { Text("Title") },
+                    maxLines = 1
+                )
+                TypeDropdown(
+                    value = note.type,
+                    onValueChange = { vm.update(note.copy(type = it)) },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                OutlinedTextField(
+                    value = note.description,
+                    onValueChange = { vm.update(note.copy(description = it)) },
+                    label = { Text("Description") },
+                    modifier = Modifier.fillMaxWidth().weight(1f)
+                )
+            }
         }
     }
 }

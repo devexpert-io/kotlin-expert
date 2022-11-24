@@ -1,31 +1,33 @@
 package com.devexperto.kotlinexpert.ui.screens.home
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import com.devexperto.kotlinexpert.data.Filter
 import com.devexperto.kotlinexpert.data.Note
-import com.devexperto.kotlinexpert.data.remote.notesClient
-import io.ktor.client.call.*
-import io.ktor.client.request.*
+import com.devexperto.kotlinexpert.data.remote.NotesRepository
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-object HomeState {
+class HomeViewModel(private val scope: CoroutineScope) {
 
-    private val _state = MutableStateFlow(UiState())
-    val state = _state.asStateFlow()
+    var state by mutableStateOf(UiState())
+        private set
 
-    fun loadNotes(coroutineScope: CoroutineScope) {
-        coroutineScope.launch {
-            _state.value = UiState(loading = true)
-            val response = notesClient.request("http://localhost:8080/notes")
-            _state.value = UiState(notes = response.body())
+    init {
+        loadNotes()
+    }
+
+    private fun loadNotes() {
+        scope.launch {
+            state = UiState(loading = true)
+            val response = NotesRepository.getAll()
+            state = UiState(notes = response)
         }
     }
 
     fun onFilterClick(filter: Filter) {
-        _state.update { it.copy(filter = filter) }
+        state = state.copy(filter = filter)
     }
 
     data class UiState(
