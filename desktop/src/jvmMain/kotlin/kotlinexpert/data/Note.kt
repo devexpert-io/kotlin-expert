@@ -1,4 +1,4 @@
-package com.devexperto.kotlinexpert.data
+package kotlinexpert.data
 
 import kotlinx.serialization.Serializable
 

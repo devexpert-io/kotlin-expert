@@ -1,4 +1,4 @@
-package com.devexperto.kotlinexpert.data.remote
+package kotlinexpert.data.remote
 
 import io.ktor.client.*
 import io.ktor.client.plugins.contentnegotiation.*
