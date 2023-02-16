@@ -6,7 +6,7 @@ import com.devexperto.kotlinexpert.ui.App
 
 fun main() {
     application {
-        Window(onCloseRequest = ::exitApplication) {
+        Window(onCloseRequest = ::exitApplication, title = getAppTitle()) {
             App()
         }
     }
