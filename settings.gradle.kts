@@ -16,5 +16,5 @@ pluginManagement {
 
 rootProject.name = "MyNotes"
 
-include(":desktop")
+include(":common", ":desktop")
 

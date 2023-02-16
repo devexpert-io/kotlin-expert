@@ -1,10 +1,10 @@
-package kotlinexpert.ui.screens.detail
+package com.devexperto.kotlinexpert.ui.screens.detail
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import kotlinexpert.data.Note
-import kotlinexpert.data.remote.NotesRepository
+import com.devexperto.kotlinexpert.data.Note
+import com.devexperto.kotlinexpert.data.remote.NotesRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

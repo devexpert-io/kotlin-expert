@@ -1,4 +1,4 @@
-package kotlinexpert.data
+package com.devexperto.kotlinexpert.data
 
 sealed interface Filter {
     object All : Filter

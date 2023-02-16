@@ -1,4 +1,4 @@
-package kotlinexpert.ui.screens.home
+package com.devexperto.kotlinexpert.ui.screens.home
 
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.Box
@@ -10,7 +10,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import kotlinexpert.data.Note
+import com.devexperto.kotlinexpert.data.Note
 
 @Composable
 @Preview

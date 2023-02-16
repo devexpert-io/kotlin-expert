@@ -1,6 +1,6 @@
-package kotlinexpert.data.remote
+package com.devexperto.kotlinexpert.data.remote
 
-import kotlinexpert.data.Note
+import com.devexperto.kotlinexpert.data.Note
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.http.*

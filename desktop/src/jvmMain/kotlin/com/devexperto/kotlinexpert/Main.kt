@@ -1,8 +1,8 @@
-package kotlinexpert
+package com.devexperto.kotlinexpert
 
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import kotlinexpert.ui.App
+import com.devexperto.kotlinexpert.ui.App
 
 fun main() {
     application {

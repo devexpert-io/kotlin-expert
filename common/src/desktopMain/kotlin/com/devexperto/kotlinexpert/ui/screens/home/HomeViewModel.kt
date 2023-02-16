@@ -1,11 +1,11 @@
-package kotlinexpert.ui.screens.home
+package com.devexperto.kotlinexpert.ui.screens.home
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import kotlinexpert.data.Filter
-import kotlinexpert.data.Note
-import kotlinexpert.data.remote.NotesRepository
+import com.devexperto.kotlinexpert.data.Filter
+import com.devexperto.kotlinexpert.data.Note
+import com.devexperto.kotlinexpert.data.remote.NotesRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

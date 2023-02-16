@@ -1,10 +1,10 @@
-package kotlinexpert.ui
+package com.devexperto.kotlinexpert.ui
 
 import androidx.compose.runtime.*
-import kotlinexpert.ui.screens.detail.Detail
-import kotlinexpert.ui.screens.detail.DetailViewModel
-import kotlinexpert.ui.screens.home.Home
-import kotlinexpert.ui.screens.home.HomeViewModel
+import com.devexperto.kotlinexpert.ui.screens.detail.Detail
+import com.devexperto.kotlinexpert.ui.screens.detail.DetailViewModel
+import com.devexperto.kotlinexpert.ui.screens.home.Home
+import com.devexperto.kotlinexpert.ui.screens.home.HomeViewModel
 
 sealed interface Route {
     object Home : Route

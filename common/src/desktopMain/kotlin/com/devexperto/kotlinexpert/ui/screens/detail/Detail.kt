@@ -1,4 +1,4 @@
-package kotlinexpert.ui.screens.detail
+package com.devexperto.kotlinexpert.ui.screens.detail
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,7 +13,7 @@ import androidx.compose.material.icons.filled.Save
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import kotlinexpert.data.Note
+import com.devexperto.kotlinexpert.data.Note
 
 @Composable
 fun Detail(vm: DetailViewModel, onClose: () -> Unit) {

@@ -1,4 +1,4 @@
-package kotlinexpert.ui.screens.home
+package com.devexperto.kotlinexpert.ui.screens.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import kotlinexpert.data.Note
+import com.devexperto.kotlinexpert.data.Note
 
 @Composable
 fun NotesList(notes: List<Note>, onNoteClick: (Note) -> Unit) {
