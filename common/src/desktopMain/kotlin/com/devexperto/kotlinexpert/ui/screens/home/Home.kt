@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.devexperto.kotlinexpert.data.Note
+import com.devexperto.kotlinexpert.ui.viewmodels.HomeViewModel
 
 @Composable
 @Preview
