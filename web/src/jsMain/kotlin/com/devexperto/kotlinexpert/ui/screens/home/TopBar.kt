@@ -3,9 +3,8 @@ package com.devexperto.kotlinexpert.ui.screens.home
 import androidx.compose.runtime.*
 import com.devexperto.kotlinexpert.data.Filter
 import com.devexperto.kotlinexpert.data.Note
+import com.devexperto.kotlinexpert.ui.common.Icon
 import com.devexperto.kotlinexpert.ui.theme.AppStyleSheet
-import org.jetbrains.compose.web.css.Color
-import org.jetbrains.compose.web.css.color
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.Text
@@ -24,13 +23,13 @@ fun TopBar(onFilterClick: (Filter) -> Unit) {
 fun FiltersAction(onFilterClick: (Filter) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
 
-    Div(attrs = { classes(AppStyleSheet.filtersAction) }) {
-        Div(attrs = {
-            style { color(Color.white) }
-            onClick { expanded = true }
-        }) {
-            Text("🔍")
-        }
+    Div {
+        Icon(
+            iconName = "filter_list",
+            attrs = {
+                classes(AppStyleSheet.topBarIcon)
+                onClick { expanded = !expanded }
+            })
 
         if (expanded) {
             Div(attrs = { classes(AppStyleSheet.filtersActionExpanded) }) {

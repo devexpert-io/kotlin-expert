@@ -2,6 +2,7 @@ package com.devexperto.kotlinexpert.ui.screens.detail
 
 import androidx.compose.runtime.Composable
 import com.devexperto.kotlinexpert.data.Note
+import com.devexperto.kotlinexpert.ui.common.Icon
 import com.devexperto.kotlinexpert.ui.theme.AppStyleSheet
 import com.devexperto.kotlinexpert.ui.viewmodels.DetailViewModel
 import org.jetbrains.compose.web.attributes.placeholder
@@ -91,28 +92,34 @@ private fun TypeDropdown(value: Note.Type, onValueChange: (Note.Type) -> Unit) {
 @Composable
 private fun TopBar(note: Note, onClose: () -> Unit, onSave: () -> Unit, onDelete: () -> Unit) {
     Div(attrs = { classes(AppStyleSheet.topBar) }) {
-        Button(attrs = {
-            onClick { onClose() }
-        }) {
-            Text("Close Detail")
-        }
+        Icon(
+            iconName = "arrow_back",
+            attrs = {
+                classes(AppStyleSheet.topBarIcon)
+                onClick { onClose() }
+            }
+        )
 
         H1(attrs = { classes(AppStyleSheet.topBarTitle) }) {
             Text(note.title)
         }
 
-        Button(attrs = {
-            onClick { onSave() }
-        }) {
-            Text("Save Note")
-        }
+        Icon(
+            iconName = "save",
+            attrs = {
+                classes(AppStyleSheet.topBarIcon)
+                onClick { onSave() }
+            }
+        )
 
         if (note.id != Note.NEW_NOTE) {
-            Button(attrs = {
-                onClick { onDelete() }
-            }) {
-                Text("Delete Note")
-            }
+            Icon(
+                iconName = "delete",
+                attrs = {
+                    classes(AppStyleSheet.topBarIcon)
+                    onClick { onDelete() }
+                }
+            )
         }
     }
 }

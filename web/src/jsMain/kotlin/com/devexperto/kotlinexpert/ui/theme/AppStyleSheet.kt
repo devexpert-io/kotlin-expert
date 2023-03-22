@@ -30,6 +30,10 @@ object AppStyleSheet : StyleSheet() {
         fontSize(24.px)
         lineHeight(1.em)
         cursor("pointer")
+        property("box-shadow", "0 5px 5px 0 rgba(0, 0, 0, 0.4)")
+        self + hover style {
+            backgroundColor(Color("#6200eecc"))
+        }
     }
 
     val topBar by style {
@@ -49,8 +53,15 @@ object AppStyleSheet : StyleSheet() {
         property("margin-right", auto)
     }
 
-    val filtersAction by style {
+    val topBarIcon by style {
+        color(Color.white)
+        fontSize(24.px)
         cursor("pointer")
+        borderRadius(50.percent)
+        padding(12.px)
+        self + hover style {
+            backgroundColor(Color("#ffffff4d"))
+        }
     }
 
     val filtersActionExpanded by style {
