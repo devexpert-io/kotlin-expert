@@ -1,4 +1,4 @@
-package com.devexperto.kotlinexpert.ui.screens.detail
+package com.devexperto.kotlinexpert.ui.detail
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column

@@ -1,9 +1,9 @@
 package com.devexperto.kotlinexpert.ui
 
 import androidx.compose.runtime.*
-import com.devexperto.kotlinexpert.ui.screens.detail.Detail
+import com.devexperto.kotlinexpert.ui.detail.Detail
 import com.devexperto.kotlinexpert.ui.viewmodels.DetailViewModel
-import com.devexperto.kotlinexpert.ui.screens.home.Home
+import com.devexperto.kotlinexpert.ui.home.Home
 import com.devexperto.kotlinexpert.ui.viewmodels.HomeViewModel
 
 

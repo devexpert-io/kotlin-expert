@@ -29,7 +29,7 @@ kotlin {
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
-
+                implementation(compose.materialIconsExtended)
                 implementation("io.ktor:ktor-client-core:$ktor_version")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
@@ -42,8 +42,6 @@ kotlin {
         }
         val desktopMain by getting {
             dependencies {
-                api(compose.preview)
-                implementation(compose.materialIconsExtended)
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4")
                 implementation("io.ktor:ktor-client-okhttp:$ktor_version")
             }

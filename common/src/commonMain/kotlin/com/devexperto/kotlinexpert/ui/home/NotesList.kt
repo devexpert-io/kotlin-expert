@@ -1,4 +1,4 @@
-package com.devexperto.kotlinexpert.ui.screens.home
+package com.devexperto.kotlinexpert.ui.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*

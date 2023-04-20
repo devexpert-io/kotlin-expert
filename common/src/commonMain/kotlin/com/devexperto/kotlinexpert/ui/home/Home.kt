@@ -1,6 +1,5 @@
-package com.devexperto.kotlinexpert.ui.screens.home
+package com.devexperto.kotlinexpert.ui.home
 
-import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -14,7 +13,6 @@ import com.devexperto.kotlinexpert.data.Note
 import com.devexperto.kotlinexpert.ui.viewmodels.HomeViewModel
 
 @Composable
-@Preview
 fun Home(vm: HomeViewModel, onNoteClick: (noteId: Long) -> Unit) {
 
     MaterialTheme {
