@@ -6,8 +6,6 @@ import com.devexperto.kotlinexpert.ui.viewmodels.DetailViewModel
 import com.devexperto.kotlinexpert.ui.home.Home
 import com.devexperto.kotlinexpert.ui.viewmodels.HomeViewModel
 
-
-
 @Composable
 fun App() {
 

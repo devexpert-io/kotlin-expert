@@ -40,7 +40,13 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
+
+        val commonComposeKmpMain by creating {
+            dependsOn(commonMain)
+        }
+
         val desktopMain by getting {
+            dependsOn(commonComposeKmpMain)
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4")
                 implementation("io.ktor:ktor-client-okhttp:$ktor_version")
@@ -49,6 +55,7 @@ kotlin {
         val desktopTest by getting
 
         val androidMain by getting {
+            dependsOn(commonComposeKmpMain)
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
                 implementation("io.ktor:ktor-client-okhttp:$ktor_version")
