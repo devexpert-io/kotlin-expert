@@ -1,4 +1,4 @@
-package com.devexperto.kotlinexpert.ui.home
+package com.devexperto.kotlinexpert.ui.screens.home
 
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons

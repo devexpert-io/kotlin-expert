@@ -1,4 +1,4 @@
-package com.devexperto.kotlinexpert.ui.home
+package com.devexperto.kotlinexpert.ui.screens.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,7 +13,7 @@ import com.devexperto.kotlinexpert.data.Note
 import com.devexperto.kotlinexpert.ui.viewmodels.HomeViewModel
 
 @Composable
-fun Home(vm: HomeViewModel, onNoteClick: (noteId: Long) -> Unit) {
+actual fun Home(vm: HomeViewModel, onNoteClick: (Long) -> Unit) {
 
     MaterialTheme {
         Scaffold(

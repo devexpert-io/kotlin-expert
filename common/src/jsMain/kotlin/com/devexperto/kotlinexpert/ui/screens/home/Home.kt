@@ -11,7 +11,7 @@ import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-fun Home(vm: HomeViewModel, onNoteClick: (noteId: Long) -> Unit) {
+actual fun Home(vm: HomeViewModel, onNoteClick: (noteId: Long) -> Unit) {
     Div(attrs = {
         style {
             display(DisplayStyle.Flex)

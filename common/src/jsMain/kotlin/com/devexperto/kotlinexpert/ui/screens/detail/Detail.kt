@@ -11,7 +11,7 @@ import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.*
 
 @Composable
-fun Detail(vm: DetailViewModel, onClose: () -> Unit) {
+actual fun Detail(vm: DetailViewModel, onClose: () -> Unit) {
 
     val note = vm.state.note
 

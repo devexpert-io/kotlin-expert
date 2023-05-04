@@ -1,4 +1,4 @@
-package com.devexperto.kotlinexpert.ui.detail
+package com.devexperto.kotlinexpert.ui.screens.detail
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,7 +17,7 @@ import com.devexperto.kotlinexpert.data.Note
 import com.devexperto.kotlinexpert.ui.viewmodels.DetailViewModel
 
 @Composable
-fun Detail(vm: DetailViewModel, onClose: () -> Unit) {
+actual fun Detail(vm: DetailViewModel, onClose: () -> Unit) {
 
     val note = vm.state.note
 
