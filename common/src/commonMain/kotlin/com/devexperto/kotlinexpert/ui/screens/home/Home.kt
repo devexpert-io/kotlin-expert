@@ -2,6 +2,7 @@ package com.devexperto.kotlinexpert.ui.screens.home
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
@@ -14,7 +15,7 @@ object HomeScreen : Screen {
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         Home(
-            vm = HomeViewModel(rememberCoroutineScope()),
+            vm = rememberScreenModel { HomeViewModel() },
             onNoteClick = { navigator.push(DetailScreen(it)) }
         )
     }

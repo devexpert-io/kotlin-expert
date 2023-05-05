@@ -50,7 +50,7 @@ kotlin {
         val desktopMain by getting {
             dependsOn(commonComposeKmpMain)
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.4")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.6.4")
                 implementation("io.ktor:ktor-client-okhttp:$ktor_version")
             }
         }
