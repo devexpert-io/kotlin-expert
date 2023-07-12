@@ -4,12 +4,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Save
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -18,6 +18,7 @@ import com.devexperto.kotlinexpert.ui.screens.DropdownMenu
 import com.devexperto.kotlinexpert.ui.screens.DropdownMenuItem
 import com.devexperto.kotlinexpert.ui.viewmodels.DetailViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 actual fun Detail(vm: DetailViewModel, onClose: () -> Unit) {
 
@@ -32,40 +33,43 @@ actual fun Detail(vm: DetailViewModel, onClose: () -> Unit) {
                 onDelete = vm::delete
             )
         }
-    ) {
+    ) { padding ->
         if (vm.state.saved) {
             onClose()
         }
 
-        if (vm.state.loading) {
-            CircularProgressIndicator()
-        } else {
-            Column(
-                modifier = Modifier.padding(32.dp)
-            ) {
-                OutlinedTextField(
-                    value = note.title,
-                    onValueChange = { vm.update(note.copy(title = it)) },
-                    modifier = Modifier.fillMaxWidth(),
-                    label = { Text("Title") },
-                    maxLines = 1
-                )
-                TypeDropdown(
-                    value = note.type,
-                    onValueChange = { vm.update(note.copy(type = it)) },
-                    modifier = Modifier.fillMaxWidth()
-                )
-                OutlinedTextField(
-                    value = note.description,
-                    onValueChange = { vm.update(note.copy(description = it)) },
-                    label = { Text("Description") },
-                    modifier = Modifier.fillMaxWidth().weight(1f)
-                )
+        Box(modifier = Modifier.padding(padding)) {
+            if (vm.state.loading) {
+                CircularProgressIndicator()
+            } else {
+                Column(
+                    modifier = Modifier.padding(32.dp)
+                ) {
+                    OutlinedTextField(
+                        value = note.title,
+                        onValueChange = { vm.update(note.copy(title = it)) },
+                        modifier = Modifier.fillMaxWidth(),
+                        label = { Text("Title") },
+                        maxLines = 1
+                    )
+                    TypeDropdown(
+                        value = note.type,
+                        onValueChange = { vm.update(note.copy(type = it)) },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    OutlinedTextField(
+                        value = note.description,
+                        onValueChange = { vm.update(note.copy(description = it)) },
+                        label = { Text("Description") },
+                        modifier = Modifier.fillMaxWidth().weight(1f)
+                    )
+                }
             }
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun TypeDropdown(value: Note.Type, onValueChange: (Note.Type) -> Unit, modifier: Modifier = Modifier) {
 
@@ -93,6 +97,7 @@ private fun TypeDropdown(value: Note.Type, onValueChange: (Note.Type) -> Unit, m
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun TopBar(note: Note, onClose: () -> Unit, onSave: () -> Unit, onDelete: () -> Unit) {
     TopAppBar(

@@ -42,7 +42,6 @@ kotlin {
             dependencies {
                 api(compose.runtime)
                 api(compose.foundation)
-                api(compose.material)
                 api(compose.material3)
                 implementation(compose.materialIconsExtended)
                 implementation("io.ktor:ktor-client-core:$ktor_version")
