@@ -14,6 +14,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.devexperto.kotlinexpert.data.Note
+import com.devexperto.kotlinexpert.ui.screens.DropdownMenu
+import com.devexperto.kotlinexpert.ui.screens.DropdownMenuItem
 import com.devexperto.kotlinexpert.ui.viewmodels.DetailViewModel
 
 @Composable

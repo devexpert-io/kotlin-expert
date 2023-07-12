@@ -1,12 +1,17 @@
 package com.devexperto.kotlinexpert.ui.screens.home
 
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.runtime.*
 import com.devexperto.kotlinexpert.data.Filter
 import com.devexperto.kotlinexpert.data.Note
 import com.devexperto.kotlinexpert.getAppTitle
+import com.devexperto.kotlinexpert.ui.screens.DropdownMenu
+import com.devexperto.kotlinexpert.ui.screens.DropdownMenuItem
 
 @Composable
 fun TopBar(onFilterClick: (Filter) -> Unit) {

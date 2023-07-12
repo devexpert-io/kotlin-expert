@@ -43,6 +43,7 @@ kotlin {
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
+                api(compose.material3)
                 implementation(compose.materialIconsExtended)
                 implementation("io.ktor:ktor-client-core:$ktor_version")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
@@ -89,7 +90,12 @@ kotlin {
 
         val jsTest by getting
 
-        val iosMain by getting
+        val iosMain by getting {
+            dependsOn(commonComposeKmpMain)
+            dependencies {
+                implementation("io.ktor:ktor-client-darwin:$ktor_version")
+            }
+        }
     }
 }
 
