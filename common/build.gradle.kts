@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_VARIABLE", "UnstableApiUsage")
+@file:Suppress("UnstableApiUsage", "OPT_IN_USAGE", "PropertyName")
 
 val ktor_version: String by rootProject.project
 val voyager_version: String by rootProject.project
@@ -13,15 +13,28 @@ plugins {
 group = "com.example"
 version = "1.0-SNAPSHOT"
 
-
 kotlin {
+    targetHierarchy.default()
     android()
     jvm("desktop") {
         jvmToolchain(11)
 
     }
-    js(IR){
+    js(IR) {
         browser()
+    }
+
+    listOf(
+        iosArm64(),
+        iosX64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "common"
+            linkerOpts("-framework", "CoreGraphics")
+            linkerOpts("-framework", "CoreText")
+            linkerOpts("-framework", "Metal")
+        }
     }
 
     sourceSets {
@@ -75,6 +88,8 @@ kotlin {
         }
 
         val jsTest by getting
+
+        val iosMain by getting
     }
 }
 
