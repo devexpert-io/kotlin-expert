@@ -4,11 +4,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
+import cafe.adriel.voyager.core.model.screenModelScope
 import com.devexperto.kotlinexpert.data.Filter
 import com.devexperto.kotlinexpert.data.Note
 import com.devexperto.kotlinexpert.data.remote.NotesRepository
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ScreenModel {
@@ -21,7 +20,7 @@ class HomeViewModel : ScreenModel {
     }
 
     private fun loadNotes() {
-        coroutineScope.launch {
+        screenModelScope.launch {
             state = UiState(loading = true)
             val response = NotesRepository.getAll()
             state = UiState(notes = response)

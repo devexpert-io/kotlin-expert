@@ -1,5 +1,9 @@
 @file:Suppress("UnstableApiUsage", "OPT_IN_USAGE", "PropertyName")
 
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+
 val ktor_version: String by rootProject.project
 val voyager_version: String by rootProject.project
 
@@ -8,18 +12,18 @@ plugins {
     kotlin("plugin.serialization")
     id("org.jetbrains.compose")
     id("com.android.library")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 group = "com.example"
 version = "1.0-SNAPSHOT"
 
 kotlin {
-    targetHierarchy.default()
-    android()
-    jvm("desktop") {
-        jvmToolchain(11)
+    jvmToolchain(11)
 
-    }
+    applyDefaultHierarchyTemplate()
+    androidTarget()
+    jvm("desktop")
     js(IR) {
         browser()
     }
@@ -48,6 +52,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
                 implementation("cafe.adriel.voyager:voyager-navigator:$voyager_version")
+                implementation("cafe.adriel.voyager:voyager-screenmodel:$voyager_version")
             }
         }
         val commonTest by getting {
@@ -77,11 +82,11 @@ kotlin {
             }
         }
 
-        val androidTest by getting
+        val androidUnitTest by getting
 
         val jsMain by getting {
             dependencies {
-                implementation(compose.web.core)
+                implementation(compose.html.core)
                 implementation(compose.runtime)
                 implementation("io.ktor:ktor-client-js:$ktor_version")
             }
@@ -99,14 +104,15 @@ kotlin {
 }
 
 android {
-    compileSdk = 33
+    namespace = "com.devexperto.kotlinexpert"
+    compileSdk = 35
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 35
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }

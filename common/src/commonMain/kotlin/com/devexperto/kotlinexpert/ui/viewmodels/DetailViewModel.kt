@@ -4,7 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.coroutineScope
+import cafe.adriel.voyager.core.model.screenModelScope
 import com.devexperto.kotlinexpert.data.Note
 import com.devexperto.kotlinexpert.data.remote.NotesRepository
 import kotlinx.coroutines.launch
@@ -21,14 +21,14 @@ class DetailViewModel(private val noteId: Long) : ScreenModel {
     }
 
     private fun loadNote() {
-        coroutineScope.launch {
+        screenModelScope.launch {
             state = UiState(loading = true)
             state = UiState(note = NotesRepository.getById(noteId))
         }
     }
 
     fun save() {
-        coroutineScope.launch {
+        screenModelScope.launch {
             val note = state.note
             if (note.id == Note.NEW_NOTE) {
                 NotesRepository.save(note)
@@ -44,7 +44,7 @@ class DetailViewModel(private val noteId: Long) : ScreenModel {
     }
 
     fun delete() {
-        coroutineScope.launch {
+        screenModelScope.launch {
             NotesRepository.delete(state.note)
             state = state.copy(saved = true)
         }
